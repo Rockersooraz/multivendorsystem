@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Category;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Category;
 
 class CategoryController extends Controller
 {
@@ -12,9 +13,15 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:web');
+    // }
+
     public function index()
     {
-        return view('Category.index');
+        $category=Category::all();
+        return view('Vendor.multiauth.admin.Category.show',compact('category'));
     }
 
     /**
@@ -24,7 +31,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+         return view('Vendor.multiauth.admin.Category.category');
     }
 
     /**
@@ -35,7 +42,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title'=>'required',
+            'slug'=>'required',
+]);
+        $category=new Category;
+        $category->title=$request->title;
+        $category->slug=$request->slug;
+        $category->save();
+
+        return redirect(route('category.index'));
     }
 
     /**
@@ -57,7 +73,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category=Category::where('id',$id)->first();
+        return view('Vendor.multiauth.admin.Category.edit',compact('category'));
     }
 
     /**
@@ -69,7 +86,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'title'=>'required',
+            'slug'=>'required',
+]);
+        $category=Category::find($id);
+        $category->title=$request->title;
+        $category->slug=$request->slug;
+        $category->save();
+
+        return redirect(route('category.index'));
     }
 
     /**
@@ -80,6 +106,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::where('id',$id)->delete();
+        return redirect()->back();
     }
 }

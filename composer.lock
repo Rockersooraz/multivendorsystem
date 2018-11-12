@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9cb33a0e42d24ba09c7d5c3f79c30513",
+    "content-hash": "de294b3aeb7b1404e8c9f4dda62d1330",
     "packages": [
         {
             "name": "bitfumes/laravel-multiauth",
-            "version": "v0.3.2",
+            "version": "v0.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bitfumes/laravel-multiauth.git",
-                "reference": "fd43776ea7a4c640951981a7498af7a56bf07558"
+                "reference": "4a53fadb6e758eb52da8db0ba4e63c19146cdfaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bitfumes/laravel-multiauth/zipball/fd43776ea7a4c640951981a7498af7a56bf07558",
-                "reference": "fd43776ea7a4c640951981a7498af7a56bf07558",
+                "url": "https://api.github.com/repos/bitfumes/laravel-multiauth/zipball/4a53fadb6e758eb52da8db0ba4e63c19146cdfaf",
+                "reference": "4a53fadb6e758eb52da8db0ba4e63c19146cdfaf",
                 "shasum": ""
             },
             "require-dev": {
@@ -59,7 +59,7 @@
                 "bitfumes",
                 "multiauth"
             ],
-            "time": "2018-09-27T10:09:12+00:00"
+            "time": "2018-10-21T11:04:20+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

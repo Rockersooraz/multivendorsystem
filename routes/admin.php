@@ -27,6 +27,7 @@ Route::group([
     // Admin Lists
     Route::get('/show', 'AdminController@show')->name('admin.show');
 
+
     // Admin Roles
     Route::post('/{admin}/role/{role}', 'AdminRoleController@attach')->name('admin.attach.roles');
     Route::delete('/{admin}/role/{role}', 'AdminRoleController@detach');
@@ -42,3 +43,7 @@ Route::group([
         return abort(404);
     });
 });
+
+
+
+

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Merchant;
 
 use App\Advertisement;
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,8 @@ class HomeController extends Controller
 
     public function show() 
     {
-        return view('merchant.advertisement');
+        $arr['category']=Category::all();
+        return view('merchant.advertisement')->with($arr);
     }
 
 
@@ -49,20 +51,29 @@ class HomeController extends Controller
 
         if($request->hasfile('filename'))
         {
+            // $images = implode(',', $request->file('filename'));
 
+            // print_r($images);
+            $images = array();
             foreach($request->file('filename') as $image)
             {
 
-                $name=time().'.'.$image->getClientOriginalName();
-                $image->move(public_path().'/images/', $name);
-                $data = $name;
-                $adv->filename=$data;
-                $adv->title=$request->title;
-                $adv->price=$request->price;
-                $adv->number=$request->number;
-                $adv->description=$request->description;
-                $adv->save();
+                $name= $image->getClientOriginalExtension();
+                $new_name = rand(012345,9999999).'.'.$name;
+                $image->move(public_path().'/images/', $new_name);
+                $data = $new_name;
+                $images[] = $new_name;
             }
+
+            $final_img = implode(',', $images);
+            $adv = new Advertisement;
+            $adv->filename=$final_img;
+            $adv->title=$request->title;
+            $adv->price=$request->price;
+            $adv->number=$request->number;
+            $adv->description=$request->description;
+            $adv->save();
+           
 
         }
 

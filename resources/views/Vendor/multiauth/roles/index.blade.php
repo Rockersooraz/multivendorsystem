@@ -1,57 +1,20 @@
-@extends('multiauth::layouts.app') 
-@section('left-panel')
-
- <!-- Left Panel -->
- <aside id="left-panel" class="left-panel">
-        <nav class="navbar navbar-expand-sm navbar-default">
-
-            <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
-            </div>
-
-            <div id="main-menu" class="main-menu collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                                  
-                       <li class="active">
-                        <a href="#{{-- {{route('vendor.index')}} --}}"> <i class="fas fa-address-card"></i> &ensp; Vendor </a>
-                    </li>
-                    <br>
-
-                        <li class="active">
-                        <a href="#"> <i class="fas fa-chalkboard-teacher"> </i> &ensp; Customer </a>
-                    </li>
-                    <br>
+@extends('multiauth::layouts.lte') 
 
 
-                        <li class="active">
-                        <a href=""> <i class="fas fa-box"></i>&ensp; Products </a>
-                    </li> 
-                    <br>                  
-    
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </nav>
-    </aside><!-- /#left-panel -->
 
-    <!-- Left Panel -->
-@endsection
-
-
-@section('content')
+@section('main-section')
 <div class="container">
-    <div class="row  col-lg-12{{-- justify-content-center --}}" style="margin-top:-70px">
+    <div class="row  col-lg-12">
         <div class="col-md-8">
+            <br><br>
             <div class="card">
-                <div class="card-header bg-info text-white">
-                    Roles
+                <div class="card-header bg-info text-white" style="margin-left: 30px">
+                    <strong>Roles</strong>
                     <span class="float-right">
                         <a href="{{ route('admin.role.create') }}" class="btn btn-sm btn-success">New Role</a>
                     </span>
                 </div>
+                <br><br>
 
                 <div class="card-body">
     @include('multiauth::message')
@@ -61,7 +24,7 @@
                             {{ $role->name }}
                             <span class="badge badge-primary badge-pill">{{ $role->admins->count() }} {{ ucfirst(config('multiauth.prefix')) }}</span>
                             <div class="float-right">
-                                <a href="" class="btn btn-sm btn-secondary mr-3" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $role->id }}').submit();">Delete</a>
+                                <a href="" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $role->id }}').submit();">Delete</a>
                                 <form id="delete-form-{{ $role->id }}" action="{{ route('admin.role.delete',$role->id) }}" method="POST" style="display: none;">
                                     @csrf @method('delete')
                                 </form>

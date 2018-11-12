@@ -1,53 +1,16 @@
-@extends('multiauth::layouts.app') 
-@section('left-panel')
+@extends('multiauth::layouts.lte') 
 
- <!-- Left Panel -->
- <aside id="left-panel" class="left-panel">
-        <nav class="navbar navbar-expand-sm navbar-default">
-
-            <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
-            </div>
-
-            <div id="main-menu" class="main-menu collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                                  
-                       <li class="active">
-                        <a href="#{{-- {{route('vendor.index')}} --}}"> <i class="fas fa-address-card"></i> &ensp; Vendor </a>
-                    </li>
-                    <br>
-
-                        <li class="active">
-                        <a href="#"> <i class="fas fa-chalkboard-teacher"> </i> &ensp; Customer </a>
-                    </li>
-                    <br>
-
-
-                        <li class="active">
-                        <a href=""> <i class="fas fa-box"></i>&ensp; Products </a>
-                    </li> 
-                    <br>                  
-    
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </nav>
-    </aside><!-- /#left-panel -->
-
-    <!-- Left Panel -->
-@endsection
-
-@section('content')
-<div class="container">
-    <div class="row {{-- justify-content-center --}}" style="margin-top:-85px">
+@section('main-section')
+<div class="container" style="margin-left: 20px;">
+    <div class="row" >
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Edit this Role</div>
+                <br><br>
+
+                <div class="card-header" style="font-size: larger;"><strong>Edit this Role</strong></div>
 
                 <div class="card-body">
+                    <br>
                     <form action="{{ route('admin.role.update', $role->id) }}" method="post">
                         @csrf @method('patch')
                         <div class="form-group">
