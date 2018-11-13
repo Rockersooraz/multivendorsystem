@@ -24,13 +24,6 @@ Route::resource('/category','Category\CategoryController');
 Route::get('admin/merchant/detail','admin\AdminController@index')->name('admin.merchant.detail');
 
 
-Route::get('/product',function(){
-	return view('product.show');
-});
-
-Route::get('/product',function(){
-	return view('product.create');
-});
 
  
 
