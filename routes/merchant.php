@@ -22,7 +22,4 @@ Route::group(['namespace' => 'Merchant'], function() {
     Route::get('/advertisement','HomeController@show')->name('merchant.show');
     Route::post('/advertisement','HomeController@store')->name('merchant.store');
 
- 
-
-
-});
+ });
